@@ -11,6 +11,7 @@ import aboutImage from './assets/images/regenerated_image_1778347876691.jpg';
 
 import shahinImage from './assets/images/regenerated_image_1778347810868.jpg';
 import sikanderImage from './assets/images/regenerated_image_1778348577455.jpg';
+import azherImage from './assets/images/regenerated_image_1778428382408.png';
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -94,9 +95,9 @@ const Hero = () => {
             <a href="https://docs.google.com/forms/d/e/1FAIpQLSeXZ3LY7zMiw8V-dwaHTD4vRYj1c-WFxRZw4OvoIKcj4mmTSA/viewform?usp=publish-editor" target="_blank" rel="noreferrer" className="bg-medical-primary hover:bg-emerald-600 text-white px-8 py-4 rounded-full font-semibold transition-all shadow-[0_0_20px_rgba(16,185,129,0.4)] flex items-center gap-2">
               Apply Now <ArrowRight className="w-5 h-5" />
             </a>
-            <button className="bg-white/10 hover:bg-white/20 text-white border border-white/30 px-8 py-4 rounded-full font-semibold transition-all backdrop-blur-sm">
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdQKURfYtdvZeGx5CROQsi74OLszhsuLsKp4S86umq0zpvnBg/viewform?usp=publish-editor" target="_blank" rel="noreferrer" className="inline-block bg-white/10 hover:bg-white/20 text-white border border-white/30 px-8 py-4 rounded-full font-semibold transition-all backdrop-blur-sm">
               Book Counseling
-            </button>
+            </a>
           </div>
         </motion.div>
 
@@ -148,7 +149,7 @@ const TrustSection = () => {
               <div className="inline-flex justify-center items-center w-16 h-16 rounded-full bg-medical-light text-medical-primary mb-4 group-hover:scale-110 group-hover:bg-medical-primary group-hover:text-white transition-all duration-300">
                 {stat.icon}
               </div>
-              <h3 className={`font-display font-bold text-ink mb-1 whitespace-pre-line ${stat.value.length > 5 ? 'text-xl md:text-2xl' : 'text-4xl'}`}>{stat.value}</h3>
+              <h3 className={`font-display font-bold text-ink mb-1 whitespace-pre-line ${stat.value.length > 10 ? 'text-2xl' : 'text-4xl'}`}>{stat.value}</h3>
               <p className="text-gray-600 font-medium uppercase tracking-wide text-xs">{stat.label}</p>
             </motion.div>
           ))}
@@ -230,8 +231,8 @@ const Features = () => {
     { icon: <Home />, title: "Residential Hostel", desc: "A safe, hygienic, and disciplined living space eliminating all daily distractions." },
     { icon: <BookOpen />, title: "Self Study Library", desc: "Monitored self-study halls designed for deep work and maximum concentration." },
     { icon: <Users />, title: "Small Batch Size", desc: "Limited students per batch ensuring personalized attention for every aspirant." },
-    { icon: <MessageCircle />, title: "Parent Updates", desc: "Regular performance tracking and transparent communication with parents." },
-    { icon: <HeartPulse />, title: "24 Hrs Health Facilities", desc: "Round-the-clock medical assistance and dedicated health facilities on campus." }
+    { icon: <HeartPulse />, title: "24 Hrs Health Facilities", desc: "Round-the-clock medical assistance and dedicated health facilities on campus." },
+    { icon: <MessageCircle />, title: "Parent Updates", desc: "Regular performance tracking and transparent communication with parents." }
   ];
 
   return (
@@ -270,19 +271,23 @@ const TeamSection = () => {
   const teachers = [
     {
       name: "Shahin Sir",
-      role: "Chemistry Faculty",
+      role: "Wizard of Chemistry",
+      quote: "Chemistry is not memory, it is understanding.",
       experience: "34+ Years Experience",
       image: shahinImage
     },
     {
       name: "Azher Sir",
       role: "Senior Physics Faculty",
+      quote: "Physics is not difficult when concepts become visual.",
       experience: "17+ Years Experience",
-      image: "https://images.unsplash.com/photo-1568602471122-7832951cc4f5?q=80&w=400&fit=crop"
+      image: azherImage
     },
     {
       name: "Dr. Sikander Haider Sir",
+      shortName: "Sikander",
       role: "Biology Faculty",
+      quote: "Biology is easy when concepts connect to life.",
       experience: "10+ Years Experience",
       image: sikanderImage
     }
@@ -336,7 +341,7 @@ const TeamSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className="bg-paper p-8 rounded-3xl text-center shadow-sm border border-gray-100 hover:shadow-md transition-all group"
+              className="bg-paper p-8 rounded-3xl text-center shadow-sm border border-gray-100 hover:shadow-md transition-all group flex flex-col items-center"
             >
               <div className="w-24 h-24 bg-white rounded-full mx-auto mb-6 flex items-center justify-center border border-gray-200 group-hover:border-medical-primary transition-colors overflow-hidden relative">
                 {teacher.image ? (
@@ -349,7 +354,13 @@ const TeamSection = () => {
               </div>
               <h4 className="text-xl font-bold text-ink mb-1">{teacher.name}</h4>
               <p className="text-medical-dark font-medium mb-3">{teacher.role}</p>
-              <div className="inline-block bg-white px-4 py-1.5 rounded-full text-sm font-semibold text-gray-700 shadow-sm border border-gray-100">
+              {teacher.quote && (
+                <div className="mb-4">
+                  <p className="text-gray-600 font-serif italic text-sm leading-relaxed">"{teacher.quote}"</p>
+                  <p className="text-gray-500 font-medium text-xs mt-1">- {teacher.shortName || teacher.name.replace(' Sir', '')}</p>
+                </div>
+              )}
+              <div className="mt-auto inline-block bg-white px-4 py-1.5 rounded-full text-sm font-semibold text-gray-700 shadow-sm border border-gray-100">
                 {teacher.experience}
               </div>
             </motion.div>
@@ -516,7 +527,7 @@ const Courses = () => {
       highlight: true
     },
     {
-      title: "Class 11-12 Integrated",
+      title: "Foundation Batch",
       target: "10th Pass Students",
       duration: "2 Years",
       desc: "Comprehensive foundation building along with board exam and NEET preparation.",
@@ -558,9 +569,11 @@ const Courses = () => {
                   </li>
                 ))}
               </ul>
-              <button className={`w-full py-3 rounded-xl font-bold transition-colors ${course.highlight ? 'bg-white text-medical-primary hover:bg-gray-50' : 'bg-white/10 hover:bg-white/20'}`}>
-                Enroll Now
-              </button>
+              <a href="https://docs.google.com/forms/d/e/1FAIpQLSeXZ3LY7zMiw8V-dwaHTD4vRYj1c-WFxRZw4OvoIKcj4mmTSA/viewform" target="_blank" rel="noreferrer" className="block w-full">
+                <button className={`w-full py-3 rounded-xl font-bold transition-colors ${course.highlight ? 'bg-white text-medical-primary hover:bg-gray-50' : 'bg-white/10 hover:bg-white/20'}`}>
+                  Enroll Now
+                </button>
+              </a>
             </motion.div>
           ))}
         </div>
@@ -644,9 +657,11 @@ const Scholarship = () => {
             </p>
             
             <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <button className="bg-vision-red hover:bg-red-700 text-white px-8 py-4 rounded-full font-bold transition-all shadow-lg text-lg">
-                Register for Free Now
-              </button>
+              <a href="https://docs.google.com/forms/d/e/1FAIpQLSeXZ3LY7zMiw8V-dwaHTD4vRYj1c-WFxRZw4OvoIKcj4mmTSA/viewform" target="_blank" rel="noreferrer" className="inline-block">
+                <button className="bg-vision-red hover:bg-red-700 text-white w-full px-8 py-4 rounded-full font-bold transition-all shadow-lg text-lg">
+                  Register for Free Now
+                </button>
+              </a>
               <button className="bg-white hover:bg-gray-50 text-medical-dark border px-8 py-4 rounded-full font-bold transition-all shadow-sm text-lg">
                 View Syllabus
               </button>
